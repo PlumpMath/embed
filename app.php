@@ -5,8 +5,12 @@ require 'components/classregistry/app.php';
 define('ROOT', __DIR__);
 
 ClassRegistry::start();
-Config::start();
+Config::load('validatortests');
+Config::load('inputs');
 
-$embed = new EmbedCode;
+$embed = new EmbedCode([
+  'institution' => 12,
+  'location'    => 1,
+]);
 
-$embed->validate();
+echo $embed->build();
